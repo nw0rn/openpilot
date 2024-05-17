@@ -1,10 +1,7 @@
 name: tools
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && github.run_id || github.head_ref || github.ref }}-${{ github.workflow }}-${{ github.event_name }}
@@ -39,8 +36,6 @@ jobs:
 
   simulator_build:
     name: simulator docker build
-    permissions:
-      packages: write
     runs-on: ubuntu-latest
     if: github.repository == 'nw0rn/openpilot'
     timeout-minutes: 45
@@ -50,6 +45,8 @@ jobs:
         submodules: true
     - uses: ./.github/workflows/setup-with-retry
     - name: Setup to push to repo
+      permissions:
+        packages: write
       if: github.ref == 'refs/heads/master' && github.repository == 'nw0rn/openpilot'
       run: |
         echo "PUSH_IMAGE=true" >> "$GITHUB_ENV"
