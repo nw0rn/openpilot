@@ -45,8 +45,6 @@ jobs:
         submodules: true
     - uses: ./.github/workflows/setup-with-retry
     - name: Setup to push to repo
-      permissions:
-        packages: write
       if: github.ref == 'refs/heads/master' && github.repository == 'nw0rn/openpilot'
       run: |
         echo "PUSH_IMAGE=true" >> "$GITHUB_ENV"

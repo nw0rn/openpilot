@@ -12,7 +12,7 @@ else
   exit 1
 fi
 
-export DOCKER_REGISTRY=ghcr.io/commaai
+export DOCKER_REGISTRY=ghcr.io/nw0rn/openpilot
 export COMMIT_SHA=$(git rev-parse HEAD)
 
 TAG_SUFFIX=$2
