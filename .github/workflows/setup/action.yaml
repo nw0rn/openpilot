@@ -35,7 +35,7 @@ runs:
       if: contains(runner.name, 'buildjet')
       shell: bash
       run: |
-        docker login -u adeebshihadeh -p ${{ inputs.docker_hub_pat }}
+        docker login -u niwoerner -p ${{ inputs.docker_hub_pat }}
 
     # build cache
     - id: date
