@@ -59,7 +59,6 @@ function install_ubuntu_common_requirements() {
     libusb-1.0-0-dev \
     libzmq3-dev \
     libsystemd-dev \
-    locales \
     opencl-headers \
     ocl-icd-libopencl1 \
     ocl-icd-opencl-dev \
