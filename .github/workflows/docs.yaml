@@ -35,13 +35,13 @@ jobs:
         ${{ env.RUN }} "apt update && apt install -y doxygen && cd docs && make -j$(nproc) html"
 
     - uses: actions/checkout@v4
-      if: github.ref == 'refs/heads/master' && github.repository == 'commaai/openpilot'
+      if: github.ref == 'refs/heads/master' && github.repository == 'nw0rn/openpilot'
       with:
         path: openpilot-docs
         ssh-key: ${{ secrets.OPENPILOT_DOCS_KEY }}
-        repository: commaai/openpilot-docs
+        repository: nw0rn/openpilot-docs
     - name: Push
-      if: github.ref == 'refs/heads/master' && github.repository == 'commaai/openpilot'
+      if: github.ref == 'refs/heads/master' && github.repository == 'nw0rn/openpilot'
       run: |
         set -x
 

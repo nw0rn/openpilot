@@ -9,4 +9,4 @@ runs:
         key: pre-commit-${{ hashFiles('**/.pre-commit-config.yaml') }}
         restore-keys: |
           pre-commit-
-        save: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && github.repository == 'commaai/openpilot' }}
+        save: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && github.repository == 'nw0rn/openpilot' }}

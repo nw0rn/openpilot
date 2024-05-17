@@ -10,8 +10,8 @@ jobs:
     name: bump_submodules
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/commaai/openpilot-base:latest
-    if: github.repository == 'commaai/openpilot'
+      image: ghcr.io/nw0rn/openpilot-base:latest
+    if: github.repository == 'nw0rn/openpilot'
     steps:
     - uses: actions/checkout@v4
       with:
@@ -37,8 +37,8 @@ jobs:
     name: package_updates
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/commaai/openpilot-base:latest
-    if: github.repository == 'commaai/openpilot'
+      image: ghcr.io/nw0rn/openpilot-base:latest
+    if: github.repository == 'nw0rn/openpilot'
     steps:
     - uses: actions/checkout@v4
     - name: poetry lock

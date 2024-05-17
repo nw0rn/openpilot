@@ -11,9 +11,9 @@ jobs:
       TARGET_DIR: /tmp/openpilot
       ImageOS: ubuntu20
     container:
-      image: ghcr.io/commaai/openpilot-base:latest
+      image: ghcr.io/nw0rn/openpilot-base:latest
     runs-on: ubuntu-latest
-    if: github.repository == 'commaai/openpilot'
+    if: github.repository == 'nw0rn/openpilot'
     permissions:
       checks: read
       contents: write
