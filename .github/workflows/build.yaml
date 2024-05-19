@@ -22,6 +22,10 @@ jobs:
         with:
           username: niwoerner
           password: ${{ secrets.DOCKER_HUB_PAT }}
-      - name: Build and push
+      -
+        name: Expose GitHub Runtime
+        uses: crazy-max/ghaction-github-runtime@v3
+      -
+        name: Env
         run: |
-          docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --tag niwoerner/openpilot:test --push .
+          buildctl build
