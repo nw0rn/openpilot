@@ -13,8 +13,11 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v4
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - shell: bash
         run: |
           echo "test"
-          docker build . -t ${{ env.REGISTRY}}/${{ env.IMAGE_NAME }}:{{ env.IMAGE_TAG }}
+          docker build -t ${{ env.REGISTRY}}/${{ env.IMAGE_NAME }}:{{ env.IMAGE_TAG }} .
           docker push ${{ env.REGISTRY}}/${{ env.IMAGE_NAME }}:{{ env.IMAGE_TAG }}
