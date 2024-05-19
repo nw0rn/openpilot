@@ -23,10 +23,5 @@ jobs:
           username: niwoerner
           password: ${{ secrets.DOCKER_HUB_PAT }}
       - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: niwoerner/openpilot:${{ env.IMAGE_TAG }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+        run: |
+          docker buildx build --cache-from type=gha --cache-to type=gha,mode=max  --tag niwoerner/openpilot:test --push .
