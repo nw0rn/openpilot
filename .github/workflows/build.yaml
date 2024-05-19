@@ -24,4 +24,4 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PAT }}
       - name: Build and push
         run: |
-          docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --provenance mode=max,builder-id=https://github.com/nw0rn/openpilot/actions/runs/9147053332  --tag niwoerner/openpilot:test --push .
+          /usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /home/runner/work/_temp/docker-actions-toolkit-sCj3vX/iidfile --provenance mode=max,builder-id=https://github.com/nw0rn/openpilot/actions/runs/9147053332 --tag niwoerner/openpilot:test --metadata-file /home/runner/work/_temp/docker-actions-toolkit-sCj3vX/metadata-file --push .
