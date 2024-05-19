@@ -26,4 +26,5 @@ jobs:
         run: |
           set -xv
           echo "test"
-          docker buildx build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} --push --cache-to type=gha,mode=max --cache-from type=gha .
+          docker buildx create --name=container --driver=docker-container --use --bootstrap
+          docker buildx build --builder=container -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} --push --cache-to type=gha,mode=max --cache-from type=gha .
