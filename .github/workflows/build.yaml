@@ -20,4 +20,6 @@ jobs:
         run: |
           set -xv
           echo "test"
+          pwd
+          ls
           docker buildx build -t ${{ env.REGISTRY}}/${{ env.IMAGE_NAME }}:{{ env.IMAGE_TAG }} --push .
