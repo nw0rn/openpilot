@@ -25,7 +25,7 @@ jobs:
       -
         name: Expose GitHub Runtime
         uses: crazy-max/ghaction-github-runtime@v3
-      -
-        name: Env
+      - name: Build and push
         run: |
-          buildctl build
+
+          DOCKER_BUILDKIT=1 docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --tag niwoerner/openpilot:test --push .
