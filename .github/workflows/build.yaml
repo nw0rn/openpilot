@@ -27,5 +27,4 @@ jobs:
         uses: crazy-max/ghaction-github-runtime@v3
       - name: Build and push
         run: |
-
           DOCKER_BUILDKIT=1 docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --tag niwoerner/openpilot:test --push .
