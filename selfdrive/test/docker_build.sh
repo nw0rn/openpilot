@@ -24,3 +24,4 @@ if [ -n "$PUSH_IMAGE" ]; then
   docker tag $REMOTE_TAG $REMOTE_SHA_TAG
   docker push $REMOTE_SHA_TAG
 fi
+
