@@ -37,6 +37,9 @@ jobs:
   simulator_build:
     name: simulator docker build
     runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: ci/${{ github.job }}
+      BUILD_CACHE: /home/runner/.docker/buildkit
     if: github.repository == 'nw0rn/openpilot'
     timeout-minutes: 45
     steps:
