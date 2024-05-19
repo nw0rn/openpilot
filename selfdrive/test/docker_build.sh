@@ -22,6 +22,6 @@ DOCKER_BUILDKIT=1 docker buildx build --platform $PLATFORM --cache-from type=gha
 if [ -n "$PUSH_IMAGE" ]; then
   docker push $REMOTE_TAG
   docker tag $REMOTE_TAG $REMOTE_SHA_TAG
-  docker push $REMOTE_SHA_TAG
+  # docker push $REMOTE_SHA_TAG
 fi
 
