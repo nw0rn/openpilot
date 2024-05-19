@@ -49,6 +49,8 @@ jobs:
       with:
         submodules: true
     - uses: ./.github/workflows/setup-with-retry
+      with:
+        docker_hub_pat: ${{ secrets.DOCKER_HUB_PAT }}
     - name: Setup to push to repo
       if: github.ref == 'refs/heads/master' && github.repository == 'nw0rn/openpilot'
       run: |
