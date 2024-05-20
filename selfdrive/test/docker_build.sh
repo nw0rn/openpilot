@@ -17,7 +17,7 @@ fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
-DOCKER_BUILDKIT=1 docker build --platform $PLATFORM  --cache-from type=gha -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
+DOCKER_BUILDKIT=1 docker buildx build --platform $PLATFORM --cache-from type=gha --cache-to type=gha,mode=max,compression-level=9 -t $REMOTE_TAG -t $LOCAL_TAG -o docker -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
 docker images
 docker ps
@@ -27,4 +27,3 @@ if [ -n "$PUSH_IMAGE" ]; then
   docker tag $REMOTE_TAG $REMOTE_SHA_TAG
   docker push $REMOTE_SHA_TAG
 fi
-
