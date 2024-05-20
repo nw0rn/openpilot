@@ -60,7 +60,8 @@ runs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        push: true
+        push: false
         tags: ghcr.io/nw0rn/openpilot:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
+        load: true
