@@ -56,5 +56,11 @@ runs:
     -
       name: Expose GitHub Runtime
       uses: crazy-max/ghaction-github-runtime@v3
-    - shell: bash
-      run: eval ${{ env.BUILD }}
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: ghcr.io/nw0rn/openpilot:latest
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
