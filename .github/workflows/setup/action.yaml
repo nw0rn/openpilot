@@ -48,9 +48,9 @@ runs:
       uses: actions/checkout@v4
     - shell: bash
       run: |
-        docker buildx create test
+        docker buildx create --use
         docker buildx ls
-        dokcer buildx use --default test
+        dokcer buildx use --default docker
     - name: Login to Docker Hub
       shell: bash
       run: |
