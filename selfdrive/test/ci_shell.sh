@@ -17,3 +17,4 @@ docker run \
        --env PYTHONPATH=$OP_ROOT \
        ghcr.io/commaai/openpilot-base:latest \
        /bin/bash
+
