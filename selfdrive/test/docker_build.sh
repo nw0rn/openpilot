@@ -19,6 +19,9 @@ source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
 DOCKER_BUILDKIT=1 docker buildx build --platform $PLATFORM --cache-from type=gha --cache-to type=gha,mode=max -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
+docker images
+docker ps
+
 if [ -n "$PUSH_IMAGE" ]; then
   docker push $REMOTE_TAG
   docker tag $REMOTE_TAG $REMOTE_SHA_TAG
