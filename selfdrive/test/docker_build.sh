@@ -17,7 +17,7 @@ fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
-docker build --build-arg BUILDKIT_INLINE_CACHE=1 --platform $PLATFORM --cache-from type=registry,ref=ghcr.io/nw0rn/openpilot/openpilot-base -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
+docker buildx build --cache-to type=registry,ref=ghcr.io/nw0rn/openpilot/openpilot-base --platform $PLATFORM --cache-from type=registry,ref=ghcr.io/nw0rn/openpilot/openpilot-base -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
 docker images
 docker ps
@@ -28,4 +28,3 @@ if [ -n "$PUSH_IMAGE" ]; then
   docker tag $REMOTE_TAG $REMOTE_SHA_TAG
   docker push $REMOTE_SHA_TAG
 fi
-
