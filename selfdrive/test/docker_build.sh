@@ -22,6 +22,7 @@ docker buildx build --platform $PLATFORM --cache-from type=gha --cache-to type=g
 
 docker images
 docker ps
+env
 
 if [ -n "$PUSH_IMAGE" ]; then
   docker push $REMOTE_TAG
