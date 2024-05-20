@@ -40,7 +40,7 @@ jobs:
     - uses: ./.github/workflows/setup-pre-commit
     - uses: ./.github/workflows/setup-with-retry
     - name: Check submodules
-      if: github.ref == 'refs/heads/master' && github.repository == 'commaai/openpilot'
+      if: github.ref == 'refs/heads/master' && github.repository == 'nw0rn/openpilot'
       timeout-minutes: 1
       run: release/check-submodules.sh
     - name: Build openpilot and run checks
@@ -68,7 +68,7 @@ jobs:
     strategy:
       matrix:
         arch: ${{ fromJson(
-           ((github.repository == 'commaai/openpilot') &&
+           ((github.repository == 'nw0rn/openpilot') &&
               ((github.event_name != 'pull_request') ||
                (github.event.pull_request.head.repo.full_name == 'commaai/openpilot'))) && '["x86_64", "aarch64"]' || '["x86_64"]' ) }}
     runs-on: ${{ (matrix.arch == 'aarch64') && 'namespace-profile-arm64-2x8' || 'ubuntu-latest' }}
@@ -86,9 +86,9 @@ jobs:
     name: docker push
     strategy:
       matrix:
-        arch: ${{ fromJson( (github.repository == 'commaai/openpilot') && '["x86_64", "aarch64"]' || '["x86_64"]' ) }}
+        arch: ${{ fromJson( (github.repository == 'nw0rn/openpilot') && '["x86_64", "aarch64"]' || '["x86_64"]' ) }}
     runs-on: ${{ (matrix.arch == 'aarch64') && 'namespace-profile-arm64-2x8' || 'ubuntu-latest' }}
-    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && github.repository == 'commaai/openpilot'
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && github.repository == 'nw0rn/openpilot'
     steps:
     - uses: actions/checkout@v4
       with:
@@ -105,7 +105,7 @@ jobs:
   docker_push_multiarch:
     name: docker push multiarch tag
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && github.repository == 'commaai/openpilot'
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && github.repository == 'nw0rn/openpilot'
     needs: [docker_push]
     steps:
     - uses: actions/checkout@v4
@@ -121,7 +121,7 @@ jobs:
 
   static_analysis:
     name: static analysis
-    runs-on: ${{ ((github.repository == 'commaai/openpilot') &&
+    runs-on: ${{ ((github.repository == 'nw0rn/openpilot') &&
                    ((github.event_name != 'pull_request') ||
                     (github.event.pull_request.head.repo.full_name == 'commaai/openpilot'))) && 'namespace-profile-amd64-8x16' || 'ubuntu-latest' }}
     steps:
@@ -136,7 +136,7 @@ jobs:
 
   unit_tests:
     name: unit tests
-    runs-on: ${{ ((github.repository == 'commaai/openpilot') &&
+    runs-on: ${{ ((github.repository == 'nw0rn/openpilot') &&
                    ((github.event_name != 'pull_request') ||
                     (github.event.pull_request.head.repo.full_name == 'commaai/openpilot'))) && 'namespace-profile-amd64-8x16' || 'ubuntu-latest' }}
     steps:
@@ -167,7 +167,7 @@ jobs:
 
   process_replay:
     name: process replay
-    runs-on: ${{ ((github.repository == 'commaai/openpilot') &&
+    runs-on: ${{ ((github.repository == 'nw0rn/openpilot') &&
                    ((github.event_name != 'pull_request') ||
                     (github.event.pull_request.head.repo.full_name == 'commaai/openpilot'))) && 'namespace-profile-amd64-8x16' || 'ubuntu-latest' }}
     steps:
@@ -204,7 +204,7 @@ jobs:
         name: process_replay_diff.txt
         path: selfdrive/test/process_replay/diff.txt
     - name: Upload reference logs
-      if: ${{ failure() && steps.print-diff.outcome == 'success' && github.repository == 'commaai/openpilot' && env.AZURE_TOKEN != '' }}
+      if: ${{ failure() && steps.print-diff.outcome == 'success' && github.repository == 'nw0rn/openpilot' && env.AZURE_TOKEN != '' }}
       run: |
         ${{ env.RUN }} "unset PYTHONWARNINGS && AZURE_TOKEN='$AZURE_TOKEN' python selfdrive/test/process_replay/test_processes.py -j$(nproc) --upload-only"
     # PYTHONWARNINGS triggers a SyntaxError in onnxruntime
@@ -228,7 +228,7 @@ jobs:
 
   test_cars:
     name: cars
-    runs-on: ${{ ((github.repository == 'commaai/openpilot') &&
+    runs-on: ${{ ((github.repository == 'nw0rn/openpilot') &&
                    ((github.event_name != 'pull_request') ||
                     (github.event.pull_request.head.repo.full_name == 'commaai/openpilot'))) && 'namespace-profile-amd64-8x16' || 'ubuntu-latest' }}
     strategy:
