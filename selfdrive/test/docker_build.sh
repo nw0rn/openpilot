@@ -17,7 +17,7 @@ fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
-DOCKER_BUILDKIT=1 docker build --platform $PLATFORM  --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from type=registry,ref=$REMOTE_TAG -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE --push  $OPENPILOT_DIR
+DOCKER_BUILDKIT=1 docker build --platform $PLATFORM  --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from type=registry,ref=ghcr.io/commaai/openpilot-base:latest -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE --push  $OPENPILOT_DIR
 
 docker images
 docker ps
