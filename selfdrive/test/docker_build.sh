@@ -17,7 +17,7 @@ fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
-docker buildx build --platform $PLATFORM --cache-from type=gha --cache-to type=gha,mode=max -t $REMOTE_TAG:$GITHUB_RUN_ID -o local -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
+docker buildx build --platform $PLATFORM --cache-from type=gha --cache-to type=gha,mode=max -t localhost:5000/$REMOTE_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
 docker images
 docker ps
