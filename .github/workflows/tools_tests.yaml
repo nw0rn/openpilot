@@ -56,6 +56,8 @@ jobs:
       run: eval "$BUILD"
     - name: Build openpilot
       run: |
+        docker images
+        docker ps
         ${{ env.RUN }} "scons -j$(nproc)"
     - name: Run bridge test
       run: |
