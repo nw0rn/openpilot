@@ -17,7 +17,7 @@ fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
-docker build  --platform $PLATFORM --cache-from type=registry,ref=ghcr.io/nw0rn/openpilot/openpilot-base -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
+DOCKER_BUILDKIT=1 docker build  --platform $PLATFORM --build-arg BUILDKIT_INLINE_CACHE=1 -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
 docker images
 docker ps
