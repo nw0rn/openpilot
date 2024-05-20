@@ -47,9 +47,11 @@ runs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-      with:
-        driver: docker
+    - shell: bash
+      run: |
+        docker buildx create test
+        docker buildx ls
+        dokcer buildx use --default test
     - name: Login to Docker Hub
       shell: bash
       run: |
