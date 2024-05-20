@@ -17,7 +17,7 @@ fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
-docker buildx build --platform $PLATFORM --cache-from type=registry,ref=ghcr.io/nw0rn/openpilot/openpilot-base-cache --cache-to type=registry,ref=ghcr.io/nw0rn/openpilot/openpilot-base-cache,mode=max --push -o type=registry,oci-mediatypes=true,compression=estargz,force-compression=true -t $REMOTE_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
+docker buildx build --platform $PLATFORM --cache-from type=registry,ref=ghcr.io/nw0rn/openpilot/openpilot-base-cache --cache-to type=registry,ref=ghcr.io/nw0rn/openpilot/openpilot-base-cache,mode=max,oci-mediatypes=true,compression=estargz,force-compression=true --push -t $REMOTE_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
 docker images
 docker ps
