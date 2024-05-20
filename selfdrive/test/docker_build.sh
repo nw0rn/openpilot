@@ -16,7 +16,6 @@ else
 fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
-docker buildx use default
 docker build build-arg BUILDKIT_INLINE_CACHE=1 --cache-from ghcr.io/commaai/openpilot-base:latest -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
 docker images
