@@ -46,11 +46,6 @@ runs:
     # build our docker image
     - name: Checkout
       uses: actions/checkout@v4
-    - shell: bash
-      run: |
-        docker buildx create --use
-        docker buildx ls
-        docker buildx use default
     - name: Login to Docker Hub
       shell: bash
       run: |
