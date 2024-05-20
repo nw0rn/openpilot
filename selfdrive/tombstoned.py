@@ -20,7 +20,6 @@ MAX_TOMBSTONE_FN_LEN = 62  # 85 - 23 ("<dongle id>/crash/")
 TOMBSTONE_DIR = "/data/tombstones/"
 APPORT_DIR = "/var/crash/"
 
-
 def safe_fn(s):
   extra = ['_']
   return "".join(c for c in s if c.isalnum() or c in extra).rstrip()
