@@ -16,6 +16,7 @@ else
 fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
+docker pull ghcr.io/nw0rn/openpilot/openpilot-base:latest
 docker build --cache-from ghcr.io/nw0rn/openpilot/openpilot-base:latest -t $REMOTE_TAG -t $LOCAL_TAG -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
 
 docker images
