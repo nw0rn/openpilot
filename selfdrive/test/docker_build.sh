@@ -17,8 +17,8 @@ fi
 
 source $SCRIPT_DIR/docker_common.sh $1 "$TAG_SUFFIX"
 
-# DOCKER_BUILDKIT=1 docker buildx build --platform $PLATFORM --cache-from type=gha --cache-to type=gha,mode=max -t $REMOTE_TAG --push -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
-/usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max  --tag ghcr.io/nw0rn/openpilot:123 --push .
+docker buildx build --platform $PLATFORM --cache-from type=gha --cache-to type=gha,mode=max -t $REMOTE_TAG --push -f $OPENPILOT_DIR/$DOCKER_FILE $OPENPILOT_DIR
+# /usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max  --tag ghcr.io/nw0rn/openpilot:123 --push .
 
 docker images
 docker ps
