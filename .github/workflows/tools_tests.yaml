@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  BASE_IMAGE: openpilot-base
+  BASE_IMAGE: openpilot-base:$GITHUB_RUN_ID
   DOCKER_LOGIN: docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
   BUILD: selfdrive/test/docker_build.sh base
