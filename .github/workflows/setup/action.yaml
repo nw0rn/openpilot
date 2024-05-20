@@ -50,7 +50,7 @@ runs:
       run: |
         docker buildx create --use
         docker buildx ls
-        dokcer buildx use --default docker
+        docker buildx use --default docker
     - name: Login to Docker Hub
       shell: bash
       run: |
