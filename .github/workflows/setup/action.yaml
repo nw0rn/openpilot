@@ -46,7 +46,6 @@ runs:
     # build our docker image
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Set up Docker Buildx
     - shell: bash
       run: |
         docker buildx create test
