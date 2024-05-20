@@ -59,5 +59,16 @@ runs:
         find . -type f -executable -not -perm 755 -exec chmod 755 {} \;
         find . -type f -not -executable -not -perm 644 -exec chmod 644 {} \;
     # build our docker image
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login to Docker Hub
+      shell: bash
+      run: |
+        docker login -u niwoerner -p ${{ inputs.docker_hub_pat }}
+    -
+      name: Expose GitHub Runtime
+      uses: crazy-max/ghaction-github-runtime@v3
     - shell: bash
       run: eval ${{ env.BUILD }}
