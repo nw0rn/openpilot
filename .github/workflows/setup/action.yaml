@@ -64,4 +64,8 @@ runs:
         tags: ghcr.io/nw0rn/openpilot:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
-        load: true
+        load: false
+    - shell: bash
+      run: |
+        docker images
+        docker ps
